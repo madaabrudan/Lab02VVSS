@@ -4,9 +4,7 @@ import biblioteca.model.Carte;
 import biblioteca.repository.repoInterfaces.CartiRepoInterface;
 import biblioteca.repository.repoMock.CartiRepoMock;
 import biblioteca.util.Validator;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,33 +12,20 @@ import java.util.List;
 public class CartiRepoTest {
     static Carte carte;
     static CartiRepoInterface crRepo = new CartiRepo();
-    static CartiRepoInterface crMock = new CartiRepoMock();
 
-    @BeforeClass
-    public static void creazaCarte() {
+
+    @Before
+    public void creazaCarte() {
+        carte = new Carte();
+    }
+
+    @After
+    public void reinitializareCarte() {
         carte = new Carte();
     }
 
 //ECP_valid
-    @Test
-    public void adaugaCarteMock() {
-        carte.adaugaReferent("Marin Preda");
-        carte.adaugaReferent("Ion Creanga");
-        carte.setTitlu("Morometii");
-        carte.setAnAparitie(1980);
-        carte.setEditura("Corint");
-        carte.adaugaCuvantCheie("pamant");
-        carte.adaugaCuvantCheie("salcam");
 
-        try {
-            crRepo.adaugaCarte(carte);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        boolean isFound = crMock.getCarti().contains(carte);
-        Assert.assertTrue(isFound);
-    }
 
     @Test
     public void adaugaCarteRepo() {
