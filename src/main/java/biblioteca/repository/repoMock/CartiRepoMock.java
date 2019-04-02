@@ -60,7 +60,7 @@ public class CartiRepoMock implements CartiRepoInterface {
 	}
 
 	@Override
-	public List<Carte> getCartiOrdonateDinAnul(String an) {
+	public List<Carte> getCartiOrdonateDinAnul(Integer an) {
 		List<Carte> lc = getCarti();
 		List<Carte> lca = new ArrayList<Carte>();
 		for(Carte c:lc){

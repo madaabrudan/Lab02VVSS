@@ -20,6 +20,8 @@ public class Validator {
 		}
 		if(!isOKString(c.getTitlu()))
 			throw new Exception("Titlu invalid!");
+		if(!isOKString(c.getEditura()))
+			throw new Exception("Editura invalida!");
 		for(String s:c.getReferenti()){
 			if(!isOKString(s))
 				throw new Exception("Autor invalid!");
@@ -28,12 +30,23 @@ public class Validator {
 			if(!isOKString(s))
 				throw new Exception("Cuvant cheie invalid!");
 		}
-		if(!Validator.isNumber(c.getAnAparitie()))
-			throw new Exception("Editura invalid!");
+		validateAnAparitie(c.getAnAparitie());
 	}
 	
-	public static boolean isNumber(String s){
-		return s.matches("[0-9]+");
+	public static boolean isNumber(Integer s){
+		//return s.matches("[0-9]+");
+		return s > 0;
+	}
+
+	public static boolean isAnAparitieValid(Integer s){
+		//return s.matches("[0-9]+");
+		return s > 1899;
+	}
+
+	public static void validateAnAparitie(Integer s) throws Exception {
+		if(!(s > 1899)){
+			throw new Exception("An aparitie invalid!");
+		}
 	}
 	
 	public static boolean isOKString(String s){

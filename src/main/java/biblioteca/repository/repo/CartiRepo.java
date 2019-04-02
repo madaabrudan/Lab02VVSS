@@ -3,6 +3,7 @@ package biblioteca.repository.repo;
 
 import biblioteca.model.Carte;
 import biblioteca.repository.repoInterfaces.CartiRepoInterface;
+import biblioteca.util.Validator;
 
 import java.io.*;
 import java.net.URL;
@@ -21,7 +22,8 @@ public class CartiRepo implements CartiRepoInterface {
 	}
 	
 	@Override
-	public void adaugaCarte(Carte c) {
+	public void adaugaCarte(Carte c) throws Exception {
+		Validator.validateCarte(c);
 		BufferedWriter bw = null;
 		try {
 			bw = new BufferedWriter(new FileWriter(file,true));
@@ -80,11 +82,11 @@ public class CartiRepo implements CartiRepoInterface {
 	}
 
 	@Override
-	public List<Carte> getCartiOrdonateDinAnul(String an) {
+	public List<Carte> getCartiOrdonateDinAnul(Integer an) {
 		List<Carte> lc = getCarti();
 		List<Carte> lca = new ArrayList<Carte>();
 		for(Carte c:lc){
-			if(c.getAnAparitie().equals(an) == true){
+			if(c.getAnAparitie()== an){
 				lca.add(c);
 			}
 		}

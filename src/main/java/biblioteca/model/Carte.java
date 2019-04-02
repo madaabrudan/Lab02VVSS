@@ -9,14 +9,19 @@ public class Carte {
 
 	private String titlu;
 	private List<String> referenti;
-	private String anAparitie;
-    private String editura;
+	private Integer anAparitie;
+
+	public String getEditura() {
+		return editura;
+	}
+
+	private String editura;
 	private List<String> cuvinteCheie;
 
 	public Carte(){
 		titlu = "";
 		referenti = new ArrayList<String>();
-		anAparitie = "";
+		anAparitie = 0;
 		cuvinteCheie = new ArrayList<String>();
 		editura="";
 	}
@@ -37,11 +42,11 @@ public class Carte {
 		return referenti;
 	}
 
-	public String getAnAparitie() {
+	public Integer getAnAparitie() {
         return anAparitie;
     }
 
-	public void setAnAparitie(String anAparitie) {
+	public void setAnAparitie(Integer anAparitie) {
 		this.anAparitie = anAparitie;
 	}
 
@@ -94,7 +99,7 @@ public class Carte {
 			c.adaugaReferent(s);
 		}
 
-		c.anAparitie = atr[2];
+		c.anAparitie = Integer.parseInt(atr[2]);
 		for(String s:cuvCheie){
 			c.adaugaCuvantCheie(s);
 		}
@@ -102,4 +107,37 @@ public class Carte {
 		return c;
 	}
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (!Carte.class.isAssignableFrom(obj.getClass())) {
+            return false;
+        }
+
+        final Carte other = (Carte) obj;
+        if ((this.referenti == null) ? (other.referenti != null) : !this.referenti.equals(other.referenti)) {
+            return false;
+        }
+
+        if (!this.editura.equals(other.editura)) {
+            return false;
+        }
+
+        if (!this.titlu.equals(other.titlu)) {
+            return false;
+        }
+
+        if (!this.cuvinteCheie.equals(other.cuvinteCheie)) {
+            return false;
+        }
+
+        if ((int)this.anAparitie != (int)other.anAparitie) {
+            return false;
+        }
+
+        return true;
+    }
 }
