@@ -6,12 +6,13 @@ import biblioteca.repository.repoMock.CartiRepoMock;
 import biblioteca.util.Validator;
 import org.junit.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CartiRepoTest {
-    static Carte carte;
-    static CartiRepoInterface crRepo = new CartiRepo();
+    public static Carte carte;
+    public static CartiRepoInterface crRepo = new CartiRepo();
 
 
     @Before
@@ -29,7 +30,12 @@ public class CartiRepoTest {
 
     @Test
     public void adaugaCarteRepo() {
-        int sizeBeforeAdding = crRepo.getCarti().size();
+        int sizeBeforeAdding = 0;
+        try {
+            sizeBeforeAdding = crRepo.getCarti().size();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         carte.adaugaReferent("Marin Preda");
         carte.adaugaReferent("Ion Creanga");
         carte.setTitlu("Morometii");
@@ -43,7 +49,12 @@ public class CartiRepoTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        int sizeAfterAdding = crRepo.getCarti().size();
+        int sizeAfterAdding = 0;
+        try {
+            sizeAfterAdding = crRepo.getCarti().size();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         Assert.assertEquals(sizeBeforeAdding + 1, sizeAfterAdding);
     }
@@ -59,10 +70,14 @@ public class CartiRepoTest {
         carte.setEditura("Luceafarul");
         carte.adaugaCuvantCheie("luceafar");
 
-        for(Carte carteDinLista : crRepo.getCarti()){
-            if(carteDinLista.equals(carte)){
-                itemsBefore++;
+        try {
+            for(Carte carteDinLista : crRepo.getCarti()){
+                if(carteDinLista.equals(carte)){
+                    itemsBefore++;
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         try {
@@ -71,10 +86,14 @@ public class CartiRepoTest {
             e.printStackTrace();
         }
 
-        for(Carte carteDinLista : crRepo.getCarti()){
-            if(carteDinLista.equals(carte)){
-                itemsAfter++;
+        try {
+            for(Carte carteDinLista : crRepo.getCarti()){
+                if(carteDinLista.equals(carte)){
+                    itemsAfter++;
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         Assert.assertEquals(itemsBefore + 1, itemsAfter);
@@ -90,10 +109,14 @@ public class CartiRepoTest {
         carte.setEditura("L");
         carte.adaugaCuvantCheie("luceafar");
 
-        for(Carte carteDinLista : crRepo.getCarti()){
-            if(carteDinLista.equals(carte)){
-                itemsBefore++;
+        try {
+            for(Carte carteDinLista : crRepo.getCarti()){
+                if(carteDinLista.equals(carte)){
+                    itemsBefore++;
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         try {
@@ -102,10 +125,14 @@ public class CartiRepoTest {
             e.printStackTrace();
         }
 
-        for(Carte carteDinLista : crRepo.getCarti()){
-            if(carteDinLista.equals(carte)){
-                itemsAfter++;
+        try {
+            for(Carte carteDinLista : crRepo.getCarti()){
+                if(carteDinLista.equals(carte)){
+                    itemsAfter++;
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         Assert.assertEquals(itemsBefore + 1, itemsAfter);
@@ -121,10 +148,14 @@ public class CartiRepoTest {
         carte.setEditura("Luceafarul");
         carte.adaugaCuvantCheie("luceafar");
 
-        for(Carte carteDinLista : crRepo.getCarti()){
-            if(carteDinLista.equals(carte)){
-                itemsBefore++;
+        try {
+            for(Carte carteDinLista : crRepo.getCarti()){
+                if(carteDinLista.equals(carte)){
+                    itemsBefore++;
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         try {
@@ -133,10 +164,14 @@ public class CartiRepoTest {
             e.printStackTrace();
         }
 
-        for(Carte carteDinLista : crRepo.getCarti()){
-            if(carteDinLista.equals(carte)){
-                itemsAfter++;
+        try {
+            for(Carte carteDinLista : crRepo.getCarti()){
+                if(carteDinLista.equals(carte)){
+                    itemsAfter++;
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         Assert.assertEquals(itemsBefore + 1, itemsAfter);

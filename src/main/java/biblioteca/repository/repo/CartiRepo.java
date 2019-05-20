@@ -13,15 +13,15 @@ import java.util.Comparator;
 import java.util.List;
 
 public class CartiRepo implements CartiRepoInterface {
-	
+
 	private String file = "cartiBD.dat";
-	
+
 	public CartiRepo(){
 		URL location = CartiRepo.class.getProtectionDomain().getCodeSource().getLocation();
-        System.out.println(location.getFile());
+		System.out.println(location.getFile());
 	}
-	
-	@Override
+
+		@Override
 	public void adaugaCarte(Carte c) throws Exception {
 		Validator.validateCarte(c);
 		BufferedWriter bw = null;
@@ -29,7 +29,7 @@ public class CartiRepo implements CartiRepoInterface {
 			bw = new BufferedWriter(new FileWriter(file,true));
 			bw.write(c.toString());
 			bw.newLine();
-			
+
 			bw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -46,14 +46,14 @@ public class CartiRepo implements CartiRepoInterface {
 			while((line=br.readLine())!=null){
 				lc.add(Carte.getCarteFromString(line));
 			}
-			
+
 			br.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return lc;
 	}
 
@@ -86,11 +86,11 @@ public class CartiRepo implements CartiRepoInterface {
 		List<Carte> lc = getCarti();
 		List<Carte> lca = new ArrayList<Carte>();
 		for(Carte c:lc){
-			if(c.getAnAparitie()== an){
+			if(c.getAnAparitie().equals(an)){
 				lca.add(c);
 			}
 		}
-		
+
 		Collections.sort(lca,new Comparator<Carte>(){
 
 			@Override
@@ -102,9 +102,9 @@ public class CartiRepo implements CartiRepoInterface {
 
 				return a.getTitlu().compareTo(b.getTitlu());
 			}
-		
+
 		});
-		
+
 		return lca;
 	}
 

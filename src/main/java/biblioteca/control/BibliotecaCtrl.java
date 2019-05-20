@@ -23,8 +23,8 @@ public class BibliotecaCtrl {
     }
 
 
-    public List<Carte> cautaCarte(String autor) throws Exception {
-        Validator.isStringOK(autor);
+    public List<Carte> cautaCarte(String autor) throws Exception{
+        Validator.isOKString(autor);
         return cr.cautaCarte(autor);
     }
 

@@ -29,7 +29,7 @@ public class CartiRepoMock implements CartiRepoInterface {
 	public void adaugaCarte(Carte c) {
 		carti.add(c);
 	}
-	
+
 	@Override
 	public List<Carte> cautaCarte(String ref) {
 		List<Carte> carti = getCarti();
@@ -68,7 +68,7 @@ public class CartiRepoMock implements CartiRepoInterface {
 				lca.add(c);
 			}
 		}
-		
+
 		Collections.sort(lca,new Comparator<Carte>(){
 
 			@Override
@@ -76,12 +76,12 @@ public class CartiRepoMock implements CartiRepoInterface {
 				if(a.getTitlu().compareTo(b.getTitlu())==0){
 					return a.getReferenti().get(0).compareTo(b.getReferenti().get(0));
 				}
-				
+
 				return a.getTitlu().compareTo(b.getTitlu());
 			}
-		
+
 		});
-		
+
 		return lca;
 	}
 

@@ -32,7 +32,7 @@ public class Consola {
                     cautaCartiDupaAutor();
                     break;
                 case 3:
-                    afiseazaCartiOrdonateDinAnul();
+                   afiseazaCartiOrdonateDinAnul();
                     break;
                 case 4:
                     afiseazaToateCartile();
